@@ -13,7 +13,7 @@ const App = () => {
     setMessages([...messages, { text: input, type: 'user' }]);
 
     try {
-      const response = await axios.post('http://localhost:5000/generate', { input }); // Simplified request without token
+      const response = await axios.post('https://llmmental-backend.onrender.com/generate', { input }); // Simplified request without token
       setMessages(prevMessages => [...prevMessages, { text: response.data.text, type: 'bot' }]);
     } catch (error) {
       console.error('Error generating response:', error);
@@ -26,7 +26,7 @@ const App = () => {
     if (!feedback) return;
 
     try {
-      await axios.post('http://localhost:5000/feedback', { feedback }); // Simplified request without token
+      await axios.post('https://llmmental-backend.onrender.com/feedback', { feedback }); // Simplified request without token
       setFeedback('');
       alert('Thank you for your feedback!');
     } catch (error) {
